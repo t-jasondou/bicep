@@ -1706,6 +1706,12 @@
           "NETStandard.Library": "1.6.1",
           "Newtonsoft.Json": "10.0.2"
         }
+      },
+      "Azure.Bicep.Types.Graph": {
+        "type": "Project",
+        "dependencies": {
+          "Azure.Bicep.Types": "0.1.449"
+        }
       }
     },
     "net6.0/linux-arm64": {
