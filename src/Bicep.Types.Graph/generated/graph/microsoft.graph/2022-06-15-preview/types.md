@@ -4,6 +4,7 @@
 * **Valid Scope(s)**: Unknown
 ### Properties
 * **apiVersion**: '2022-06-15-preview' (ReadOnly, DeployTimeConstant): The resource api version
+* **appId**: string
 * **displayName**: string (Required)
 * **id**: string (ReadOnly, DeployTimeConstant): The resource id
 * **name**: string (Required, DeployTimeConstant): The resource name
