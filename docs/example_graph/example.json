@@ -1,0 +1,79 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "1.9-experimental",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
+    "_generator": {
+      "name": "bicep",
+      "version": "0.7.18.23342",
+      "templateHash": "16689353984014551836"
+    }
+  },
+  "imports": {
+    "graphNamespace": {
+      "provider": "Graph",
+      "version": "1.0",
+      "config": {
+        "foo": "foo"
+      }
+    }
+  },
+  "resources": {
+    "testgroup": {
+      "import": "graphNamespace",
+      "type": "Microsoft.Graph/groups@2022-06-15-preview",
+      "properties": {
+        "name": "testname",
+        "properties": {
+          "displayName": "groupDisplayName",
+          "mailEnabled": true,
+          "mailNickName": "mailNickName"
+        }
+      }
+    },
+    "anotherGroup": {
+      "import": "graphNamespace",
+      "type": "Microsoft.Graph/groups@2022-06-15-preview",
+      "properties": {
+        "name": "testAnotherGroupName",
+        "properties": {
+          "displayName": "anotherGroupDisplayName",
+          "securityEnabled": true
+        }
+      }
+    },
+    "testApp": {
+      "import": "graphNamespace",
+      "type": "Microsoft.Graph/applications@2022-06-15-preview",
+      "properties": {
+        "name": "testAppName",
+        "displayName": "testAppDisplayName"
+      }
+    },
+    "testSP": {
+      "import": "graphNamespace",
+      "type": "Microsoft.Graph/servicePrincipals@2022-06-15-preview",
+      "properties": {
+        "name": "testSPName",
+        "appId": "[reference('testApp').appId]"
+      },
+      "dependsOn": [
+        "testApp"
+      ]
+    },
+    "exampleStorage": {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-09-01",
+      "name": "storageName",
+      "location": "location",
+      "sku": {
+        "name": "storageAccountSkuName"
+      },
+      "properties": {
+        "accessTier": "Cool"
+      },
+      "kind": "StorageV2"
+    }
+  }
+}
