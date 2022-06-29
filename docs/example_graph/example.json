@@ -6,8 +6,8 @@
     "EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
     "_generator": {
       "name": "bicep",
-      "version": "0.7.18.23342",
-      "templateHash": "16689353984014551836"
+      "version": "0.7.20.62257",
+      "templateHash": "15231367471774855944"
     }
   },
   "imports": {
@@ -20,28 +20,68 @@
     }
   },
   "resources": {
-    "testgroup": {
+    "user1": {
       "import": "graphNamespace",
-      "type": "Microsoft.Graph/groups@2022-06-15-preview",
+      "type": "Microsoft.Graph/users@2022-06-15-preview",
       "properties": {
-        "name": "testname",
-        "properties": {
-          "displayName": "groupDisplayName",
-          "mailEnabled": true,
-          "mailNickName": "mailNickName"
+        "name": "user1",
+        "accountEnabled": true,
+        "displayName": "user1DisplayName",
+        "mailNickname": "user1MailNickname",
+        "onPremisesImmutableId": "someId",
+        "userPrincipalName": "user1PrincipalName",
+        "passwordProfile": {
+          "forceChangePasswordNextSignIn": false,
+          "forceChangePasswordNextSignInWithMfa": false,
+          "password": "user1Password"
         }
       }
     },
-    "anotherGroup": {
+    "existingUser": {
+      "existing": true,
+      "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+      "apiVersion": "2021-09-30-preview",
+      "name": "my-managed-identity"
+    },
+    "myGroup1": {
       "import": "graphNamespace",
       "type": "Microsoft.Graph/groups@2022-06-15-preview",
       "properties": {
-        "name": "testAnotherGroupName",
-        "properties": {
-          "displayName": "anotherGroupDisplayName",
-          "securityEnabled": true
-        }
+        "name": "myGroup1",
+        "displayName": "Group 50987",
+        "mailEnabled": false,
+        "mailNickName": "Group50987",
+        "securityEnabled": true
       }
+    },
+    "groupWithNewMember": {
+      "import": "graphNamespace",
+      "type": "Microsoft.Graph/groups/members@2022-06-15-preview",
+      "properties": {
+        "name": "groupWithNewMember",
+        "groupName": "[reference('myGroup1').name]",
+        "memberRef": {
+          "@odata.id": "[reference('user1').id]"
+        }
+      },
+      "dependsOn": [
+        "myGroup1",
+        "user1"
+      ]
+    },
+    "groupWithExistingMember": {
+      "import": "graphNamespace",
+      "type": "Microsoft.Graph/groups/members@2022-06-15-preview",
+      "properties": {
+        "name": "groupWithExistingMember",
+        "groupName": "[reference('myGroup1').name]",
+        "memberRef": {
+          "@odata.id": "[reference('existingUser').principalId]"
+        }
+      },
+      "dependsOn": [
+        "myGroup1"
+      ]
     },
     "testApp": {
       "import": "graphNamespace",
