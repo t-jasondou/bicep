@@ -6,8 +6,8 @@
     "EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
     "_generator": {
       "name": "bicep",
-      "version": "0.7.20.62257",
-      "templateHash": "15231367471774855944"
+      "version": "0.7.21.24661",
+      "templateHash": "14605908604798189741"
     }
   },
   "imports": {
@@ -15,7 +15,7 @@
       "provider": "Graph",
       "version": "1.0",
       "config": {
-        "foo": "foo"
+        "graphToken": "graphToken"
       }
     }
   },

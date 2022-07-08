@@ -1,6 +1,6 @@
 // Import Graph namespace
 import graph as graphNamespace {
-  foo: 'foo'
+  graphToken: 'graphToken'
 }
 
 // Create a user
