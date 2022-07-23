@@ -41,6 +41,17 @@
 * **name**: string (Required, DeployTimeConstant): The resource name
 * **type**: 'Microsoft.Graph/servicePrincipals' (ReadOnly, DeployTimeConstant): The resource type
 
+## Resource Microsoft.Graph/servicePrincipals/appRoleAssignments@2022-06-15-preview
+* **Valid Scope(s)**: Unknown
+### Properties
+* **apiVersion**: '2022-06-15-preview' (ReadOnly, DeployTimeConstant): The resource api version
+* **appRoleId**: string (Required)
+* **id**: string (ReadOnly, DeployTimeConstant): The resource id
+* **name**: string (Required, DeployTimeConstant): The resource name
+* **principalId**: string (Required)
+* **resourceId**: string (Required)
+* **type**: 'Microsoft.Graph/servicePrincipals/appRoleAssignments' (ReadOnly, DeployTimeConstant): The resource type
+
 ## Resource Microsoft.Graph/users@2022-06-15-preview
 * **Valid Scope(s)**: Unknown
 ### Properties

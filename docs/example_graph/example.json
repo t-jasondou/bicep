@@ -6,8 +6,8 @@
     "EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
     "_generator": {
       "name": "bicep",
-      "version": "0.7.21.24661",
-      "templateHash": "14605908604798189741"
+      "version": "0.7.22.49461",
+      "templateHash": "7070513245765874021"
     }
   },
   "imports": {
@@ -20,6 +20,34 @@
     }
   },
   "resources": {
+    "myGroup2::anotherUser": {
+      "import": "graphNamespace",
+      "type": "Microsoft.Graph/groups/members@2022-06-15-preview",
+      "properties": {
+        "name": "groupWithAnotherUser",
+        "groupName": "[reference('myGroup2').name]",
+        "memberRef": {
+          "@odata.id": "[reference('user1').id]"
+        }
+      },
+      "dependsOn": [
+        "myGroup2",
+        "user1"
+      ]
+    },
+    "testSP::roleAssignment": {
+      "import": "graphNamespace",
+      "type": "Microsoft.Graph/servicePrincipals/appRoleAssignments@2022-06-15-preview",
+      "properties": {
+        "name": "roleAssignmentName",
+        "appRoleId": "appRoleId",
+        "principalId": "[reference('testSP').id]",
+        "resourceId": "resourceId"
+      },
+      "dependsOn": [
+        "testSP"
+      ]
+    },
     "user1": {
       "import": "graphNamespace",
       "type": "Microsoft.Graph/users@2022-06-15-preview",
@@ -43,14 +71,14 @@
       "apiVersion": "2021-09-30-preview",
       "name": "my-managed-identity"
     },
-    "myGroup1": {
+    "myGroup2": {
       "import": "graphNamespace",
       "type": "Microsoft.Graph/groups@2022-06-15-preview",
       "properties": {
-        "name": "myGroup1",
-        "displayName": "Group 50987",
+        "name": "myGroup2",
+        "displayName": "myGroup2",
         "mailEnabled": false,
-        "mailNickName": "Group50987",
+        "mailNickName": "myGroup2",
         "securityEnabled": true
       }
     },
@@ -59,13 +87,13 @@
       "type": "Microsoft.Graph/groups/members@2022-06-15-preview",
       "properties": {
         "name": "groupWithNewMember",
-        "groupName": "[reference('myGroup1').name]",
+        "groupName": "[reference('myGroup2').name]",
         "memberRef": {
           "@odata.id": "[reference('user1').id]"
         }
       },
       "dependsOn": [
-        "myGroup1",
+        "myGroup2",
         "user1"
       ]
     },
@@ -74,13 +102,13 @@
       "type": "Microsoft.Graph/groups/members@2022-06-15-preview",
       "properties": {
         "name": "groupWithExistingMember",
-        "groupName": "[reference('myGroup1').name]",
+        "groupName": "[reference('myGroup2').name]",
         "memberRef": {
           "@odata.id": "[reference('existingUser').principalId]"
         }
       },
       "dependsOn": [
-        "myGroup1"
+        "myGroup2"
       ]
     },
     "testApp": {

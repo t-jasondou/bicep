@@ -24,18 +24,26 @@ resource existingUser 'Microsoft.ManagedIdentity/userAssignedIdentities@2021-09-
 }
 
 // Create a group
-resource myGroup1 'Microsoft.Graph/groups@2022-06-15-preview' = {
-  name: 'myGroup1'
-  displayName: 'Group 50987'
+resource myGroup2 'Microsoft.Graph/groups@2022-06-15-preview' = {
+  name: 'myGroup2'
+  displayName: 'myGroup2'
   mailEnabled: false
-  mailNickName: 'Group50987'
+  mailNickName: 'myGroup2'
   securityEnabled: true
+
+  resource anotherUser 'members' = {
+    name: 'groupWithAnotherUser'
+    groupName: myGroup2.name
+    memberRef: {
+      '@odata.id': user1.id
+    }
+  }
 }
 
 // Add the new user to the group
 resource groupWithNewMember 'Microsoft.Graph/groups/members@2022-06-15-preview' = {
   name: 'groupWithNewMember'
-  groupName: myGroup1.name
+  groupName: myGroup2.name
   memberRef: {
     '@odata.id': user1.id
   }
@@ -44,7 +52,7 @@ resource groupWithNewMember 'Microsoft.Graph/groups/members@2022-06-15-preview' 
 // Add the existing managed identity to the gorup
 resource groupWithExistingMember 'Microsoft.Graph/groups/members@2022-06-15-preview' = {
   name: 'groupWithExistingMember'
-  groupName: myGroup1.name
+  groupName: myGroup2.name
   memberRef: {
     '@odata.id': existingUser.properties.principalId
   }
@@ -60,6 +68,13 @@ resource testApp 'Microsoft.Graph/applications@2022-06-15-preview' = {
 resource testSP 'Microsoft.Graph/servicePrincipals@2022-06-15-preview' = {
   name: 'testSPName'
   appId: testApp.appId
+
+  resource roleAssignment 'appRoleAssignments' = {
+    name: 'roleAssignmentName'
+    appRoleId: 'appRoleId'
+    principalId: testSP.id
+    resourceId: 'resourceId'
+  }
 }
 
 // Create an Azure storage account
