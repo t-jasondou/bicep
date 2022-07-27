@@ -6,8 +6,8 @@
     "EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
     "_generator": {
       "name": "bicep",
-      "version": "0.7.22.49461",
-      "templateHash": "7070513245765874021"
+      "version": "0.7.23.25540",
+      "templateHash": "17320741973996287505"
     }
   },
   "imports": {
@@ -24,11 +24,8 @@
       "import": "graphNamespace",
       "type": "Microsoft.Graph/groups/members@2022-06-15-preview",
       "properties": {
-        "name": "groupWithAnotherUser",
-        "groupName": "[reference('myGroup2').name]",
-        "memberRef": {
-          "@odata.id": "[reference('user1').id]"
-        }
+        "name": "anotherUserName",
+        "@odata.id": "[format('https://graph.microsoft.com/v1.0/directoryObjects/{0}', reference('user1').id)]"
       },
       "dependsOn": [
         "myGroup2",
@@ -87,29 +84,8 @@
       "type": "Microsoft.Graph/groups/members@2022-06-15-preview",
       "properties": {
         "name": "groupWithNewMember",
-        "groupName": "[reference('myGroup2').name]",
-        "memberRef": {
-          "@odata.id": "[reference('user1').id]"
-        }
-      },
-      "dependsOn": [
-        "myGroup2",
-        "user1"
-      ]
-    },
-    "groupWithExistingMember": {
-      "import": "graphNamespace",
-      "type": "Microsoft.Graph/groups/members@2022-06-15-preview",
-      "properties": {
-        "name": "groupWithExistingMember",
-        "groupName": "[reference('myGroup2').name]",
-        "memberRef": {
-          "@odata.id": "[reference('existingUser').principalId]"
-        }
-      },
-      "dependsOn": [
-        "myGroup2"
-      ]
+        "@odata.id": "[format('https://graph.microsoft.com/v1.0/directoryObjects/{0}', resourceInfo('existingUser').id)]"
+      }
     },
     "testApp": {
       "import": "graphNamespace",

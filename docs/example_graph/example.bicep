@@ -32,30 +32,16 @@ resource myGroup2 'Microsoft.Graph/groups@2022-06-15-preview' = {
   securityEnabled: true
 
   resource anotherUser 'members' = {
-    name: 'groupWithAnotherUser'
-    groupName: myGroup2.name
-    memberRef: {
-      '@odata.id': user1.id
-    }
+    name: 'anotherUserName'
+    '@odata.id': 'https://graph.microsoft.com/v1.0/directoryObjects/${user1.id}'
+
   }
 }
 
 // Add the new user to the group
 resource groupWithNewMember 'Microsoft.Graph/groups/members@2022-06-15-preview' = {
   name: 'groupWithNewMember'
-  groupName: myGroup2.name
-  memberRef: {
-    '@odata.id': user1.id
-  }
-}
-
-// Add the existing managed identity to the gorup
-resource groupWithExistingMember 'Microsoft.Graph/groups/members@2022-06-15-preview' = {
-  name: 'groupWithExistingMember'
-  groupName: myGroup2.name
-  memberRef: {
-    '@odata.id': existingUser.properties.principalId
-  }
+  '@odata.id': 'https://graph.microsoft.com/v1.0/directoryObjects/${existingUser.id}'
 }
 
 // Create an application

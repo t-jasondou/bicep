@@ -25,10 +25,9 @@
 ## Resource Microsoft.Graph/groups/members@2022-06-15-preview
 * **Valid Scope(s)**: Unknown
 ### Properties
+* **@odata.id**: string
 * **apiVersion**: '2022-06-15-preview' (ReadOnly, DeployTimeConstant): The resource api version
-* **groupName**: string
 * **id**: string (ReadOnly, DeployTimeConstant): The resource id
-* **memberRef**: [Reference](#reference): Properties of reference
 * **name**: string (Required, DeployTimeConstant): The resource name
 * **type**: 'Microsoft.Graph/groups/members' (ReadOnly, DeployTimeConstant): The resource type
 
@@ -71,8 +70,4 @@
 * **forceChangePasswordNextSignIn**: bool
 * **forceChangePasswordNextSignInWithMfa**: bool
 * **password**: string (Required)
-
-## Reference
-### Properties
-* **@odata.id**: string
 
