@@ -23,9 +23,7 @@ namespace Bicep.Core.Semantics.Namespaces
         {
             return new ObjectType("configuration", TypeSymbolValidationFlags.Default, new TypeProperty[]
             {
-                new TypeProperty("graphToken", LanguageConstants.String, TypePropertyFlags.Required),
-                // new TypeProperty("kubeConfig", LanguageConstants.String, TypePropertyFlags.Required),
-                // new TypeProperty("context", LanguageConstants.String),
+                new TypeProperty("graphInternalData", LanguageConstants.String, TypePropertyFlags.Required),
             }, null);
         }
 
