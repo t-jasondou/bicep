@@ -2039,17 +2039,10 @@
         "type": "Project",
         "dependencies": {
           "FluentAssertions": "6.7.0",
-<<<<<<< HEAD
           "MSTest.TestAdapter": "2.2.10",
           "MSTest.TestFramework": "2.2.10",
           "Microsoft.NET.Test.Sdk": "17.2.0",
-          "bicep": "1.0.0"
-=======
-          "MSTest.TestAdapter": "2.2.8",
-          "MSTest.TestFramework": "2.2.8",
-          "Microsoft.NET.Test.Sdk": "17.1.0",
           "graph-bicep": "1.0.0"
->>>>>>> graph-extensibility
         }
       },
       "bicep.core.samples": {
@@ -2058,17 +2051,10 @@
           "Azure.Bicep.Core": "1.0.0",
           "Bicep.Core.UnitTests": "1.0.0",
           "FluentAssertions": "6.7.0",
-<<<<<<< HEAD
           "MSTest.TestAdapter": "2.2.10",
           "MSTest.TestFramework": "2.2.10",
           "Microsoft.NET.Test.Sdk": "17.2.0",
-          "bicep": "1.0.0"
-=======
-          "MSTest.TestAdapter": "2.2.8",
-          "MSTest.TestFramework": "2.2.8",
-          "Microsoft.NET.Test.Sdk": "17.1.0",
           "graph-bicep": "1.0.0"
->>>>>>> graph-extensibility
         }
       },
       "bicep.core.unittests": {
