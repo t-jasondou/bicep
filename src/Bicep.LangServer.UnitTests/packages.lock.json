@@ -2016,6 +2016,7 @@
         "dependencies": {
           "Azure.Bicep.Types": "0.2.34",
           "Azure.Bicep.Types.Az": "0.2.34",
+          "Azure.Bicep.Types.Graph": "1.0.0",
           "Azure.Bicep.Types.K8s": "0.1.11",
           "Azure.Containers.ContainerRegistry": "1.1.0-beta.4",
           "Azure.Deployments.Core": "1.0.635",
@@ -2041,13 +2042,10 @@
           "System.Collections.Immutable": "6.0.0"
         }
       },
-      "bicep": {
+      "Azure.Bicep.Types.Graph": {
         "type": "Project",
         "dependencies": {
-          "Azure.Bicep.Core": "1.0.0",
-          "Azure.Bicep.Decompiler": "1.0.0",
-          "Microsoft.Extensions.Logging": "6.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "6.0.1"
+          "Azure.Bicep.Types": "0.1.449"
         }
       },
       "bicep.core.samples": {
@@ -2059,7 +2057,7 @@
           "MSTest.TestAdapter": "2.2.10",
           "MSTest.TestFramework": "2.2.10",
           "Microsoft.NET.Test.Sdk": "17.2.0",
-          "bicep": "1.0.0"
+          "graph-bicep": "1.0.0"
         }
       },
       "bicep.core.unittests": {
@@ -2098,6 +2096,15 @@
           "Microsoft.VisualStudio.Threading": "17.2.32",
           "Moq": "4.18.1",
           "OmniSharp.Extensions.LanguageClient": "0.19.5"
+        }
+      },
+      "graph-bicep": {
+        "type": "Project",
+        "dependencies": {
+          "Azure.Bicep.Core": "1.0.0",
+          "Azure.Bicep.Decompiler": "1.0.0",
+          "Microsoft.Extensions.Logging": "6.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.1"
         }
       }
     },

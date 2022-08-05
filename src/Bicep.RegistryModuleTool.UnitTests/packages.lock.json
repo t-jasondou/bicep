@@ -2103,6 +2103,7 @@
         "dependencies": {
           "Azure.Bicep.Types": "0.2.34",
           "Azure.Bicep.Types.Az": "0.2.34",
+          "Azure.Bicep.Types.Graph": "1.0.0",
           "Azure.Bicep.Types.K8s": "0.1.11",
           "Azure.Containers.ContainerRegistry": "1.1.0-beta.4",
           "Azure.Deployments.Core": "1.0.635",
@@ -2139,6 +2140,12 @@
           "System.CommandLine.NamingConventionBinder": "2.0.0-beta3.22114.1",
           "System.CommandLine.Rendering": "0.4.0-alpha.22114.1",
           "System.IO.Abstractions": "17.0.18"
+        }
+      },
+      "Azure.Bicep.Types.Graph": {
+        "type": "Project",
+        "dependencies": {
+          "Azure.Bicep.Types": "0.1.449"
         }
       },
       "bicep.registrymoduletool.testfixtures": {

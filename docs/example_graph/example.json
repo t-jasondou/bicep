@@ -1,0 +1,144 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "1.9-experimental",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
+    "_generator": {
+      "name": "bicep",
+      "version": "0.7.25.23086",
+      "templateHash": "10294844825049251712"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "imports": {
+    "graphNamespace": {
+      "provider": "Graph",
+      "version": "1.0",
+      "config": {
+        "graphInternalData": "graphInternalData"
+      }
+    }
+  },
+  "resources": {
+    "myGroup2::anotherUser": {
+      "import": "graphNamespace",
+      "type": "Microsoft.Graph/groups/members@2022-06-15-preview",
+      "properties": {
+        "name": "myGroup2",
+        "@odata.id": "[format('https://graph.microsoft.com/v1.0/directoryObjects/{0}', reference('user1').id)]"
+      },
+      "dependsOn": [
+        "myGroup2",
+        "user1"
+      ]
+    },
+    "testAppRoleAssignments::roleAssignment": {
+      "import": "graphNamespace",
+      "type": "Microsoft.Graph/servicePrincipals/appRoleAssignments@2022-06-15-preview",
+      "properties": {
+        "name": "appRoleAssignmentsName",
+        "appRoleId": "388c9dd3-eb64-4396-8f29-3290fc5b8a46",
+        "principalId": "387d849d-2307-49dc-9d4f-b99b14f3d600",
+        "resourceId": "28940da4-3667-41b5-947f-d486762a50ba"
+      },
+      "dependsOn": [
+        "testAppRoleAssignments"
+      ]
+    },
+    "exampleStorage::testChild": {
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "apiVersion": "2021-09-01",
+      "name": "[format('{0}/{1}', 'storageName', 'default')]",
+      "dependsOn": [
+        "exampleStorage"
+      ]
+    },
+    "user1": {
+      "import": "graphNamespace",
+      "type": "Microsoft.Graph/users@2022-06-15-preview",
+      "properties": {
+        "name": "user1",
+        "accountEnabled": true,
+        "displayName": "user080101DisplayName",
+        "mailNickname": "user080101MailNickname",
+        "onPremisesImmutableId": "user080101Id",
+        "userPrincipalName": "user080101PrincipalName@xgk22.onmicrosoft.com",
+        "passwordProfile": {
+          "forceChangePasswordNextSignIn": false,
+          "forceChangePasswordNextSignInWithMfa": false,
+          "password": "user080101Password"
+        }
+      }
+    },
+    "myGroup2": {
+      "import": "graphNamespace",
+      "type": "Microsoft.Graph/groups@2022-06-15-preview",
+      "properties": {
+        "name": "myGroup2",
+        "displayName": "myGroup2",
+        "mailEnabled": false,
+        "mailNickName": "myGroup2",
+        "securityEnabled": true
+      }
+    },
+    "addUser1ToGroup1": {
+      "import": "graphNamespace",
+      "type": "Microsoft.Graph/groups/members@2022-06-15-preview",
+      "properties": {
+        "name": "myGroup1",
+        "@odata.id": "[format('https://graph.microsoft.com/v1.0/directoryObjects/{0}', reference('user1').id)]"
+      },
+      "dependsOn": [
+        "user1"
+      ]
+    },
+    "testApp": {
+      "import": "graphNamespace",
+      "type": "Microsoft.Graph/applications@2022-06-15-preview",
+      "properties": {
+        "name": "testAppName",
+        "displayName": "testAppDisplayName"
+      }
+    },
+    "testAppRoleAssignments": {
+      "import": "graphNamespace",
+      "type": "Microsoft.Graph/servicePrincipals@2022-06-15-preview",
+      "properties": {
+        "name": "testSPName",
+        "appId": "[reference('testApp').appId]"
+      },
+      "dependsOn": [
+        "testApp"
+      ]
+    },
+    "testAppRoleAssignments1": {
+      "import": "graphNamespace",
+      "type": "Microsoft.Graph/servicePrincipals/appRoleAssignments@2022-06-15-preview",
+      "properties": {
+        "name": "testSP1Name/appRoleAssignments1Name",
+        "appRoleId": "388c9dd3-eb64-4396-8f29-3290fc5b8a46",
+        "principalId": "387d849d-2307-49dc-9d4f-b99b14f3d600",
+        "resourceId": "28940da4-3667-41b5-947f-d486762a50ba"
+      }
+    },
+    "exampleStorage": {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2021-09-01",
+      "name": "storageName",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "storageAccountSkuName"
+      },
+      "properties": {
+        "accessTier": "Cool"
+      },
+      "kind": "StorageV2"
+    }
+  }
+}

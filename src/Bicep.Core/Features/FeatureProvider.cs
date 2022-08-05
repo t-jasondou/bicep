@@ -14,10 +14,10 @@ namespace Bicep.Core.Features
 
         public bool RegistryEnabled => true;
 
-        private Lazy<bool> symbolicNameCodegenEnabledLazy = new(() => ReadBooleanEnvVar("BICEP_SYMBOLIC_NAME_CODEGEN_EXPERIMENTAL", defaultValue: false), LazyThreadSafetyMode.PublicationOnly);
+        private Lazy<bool> symbolicNameCodegenEnabledLazy = new(() => ReadBooleanEnvVar("BICEP_SYMBOLIC_NAME_CODEGEN_EXPERIMENTAL", defaultValue: true), LazyThreadSafetyMode.PublicationOnly);
         public bool SymbolicNameCodegenEnabled => symbolicNameCodegenEnabledLazy.Value;
 
-        private Lazy<bool> importsEnabledLazy = new(() => ReadBooleanEnvVar("BICEP_IMPORTS_ENABLED_EXPERIMENTAL", defaultValue: false), LazyThreadSafetyMode.PublicationOnly);
+        private Lazy<bool> importsEnabledLazy = new(() => ReadBooleanEnvVar("BICEP_IMPORTS_ENABLED_EXPERIMENTAL", defaultValue: true), LazyThreadSafetyMode.PublicationOnly);
         public bool ImportsEnabled => importsEnabledLazy.Value;
 
         private Lazy<bool> advancedListComprehensionEnabledLazy = new(() => ReadBooleanEnvVar("BICEP_LAMBDAS_ENABLED_EXPERIMENTAL", defaultValue: false), LazyThreadSafetyMode.PublicationOnly);

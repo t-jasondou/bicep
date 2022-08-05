@@ -31,7 +31,7 @@
             "program": "${workspaceFolder}/src/Bicep.Cli/bin/Debug/net6.0/Bicep.dll",
             "args": [
                 "build",
-                "${file}"
+                "C:/Users/Jason/OneDrive/Desktop/arm+graph/code/test.bicep"
             ],
             "env": {
                 "BICEP_TRACING_ENABLED": "true"
