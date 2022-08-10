@@ -5,6 +5,7 @@
 ### Properties
 * **apiVersion**: '2022-06-15-preview' (ReadOnly, DeployTimeConstant): The resource api version
 * **appId**: string
+* **appRoles**: [AppRole](#approle)[]
 * **displayName**: string (Required)
 * **id**: string (ReadOnly, DeployTimeConstant): The resource id
 * **name**: string (Required, DeployTimeConstant): The resource name
@@ -28,7 +29,7 @@
 * **@odata.id**: string
 * **apiVersion**: '2022-06-15-preview' (ReadOnly, DeployTimeConstant): The resource api version
 * **id**: string (ReadOnly, DeployTimeConstant): The resource id
-* **name**: string (Required, DeployTimeConstant): The resource name
+* **name**: string (Required): The resource name
 * **type**: 'Microsoft.Graph/groups/members' (ReadOnly, DeployTimeConstant): The resource type
 
 ## Resource Microsoft.Graph/servicePrincipals@2022-06-15-preview
@@ -36,6 +37,7 @@
 ### Properties
 * **apiVersion**: '2022-06-15-preview' (ReadOnly, DeployTimeConstant): The resource api version
 * **appId**: string (Required)
+* **displayName**: string
 * **id**: string (ReadOnly, DeployTimeConstant): The resource id
 * **name**: string (Required, DeployTimeConstant): The resource name
 * **type**: 'Microsoft.Graph/servicePrincipals' (ReadOnly, DeployTimeConstant): The resource type
@@ -46,7 +48,7 @@
 * **apiVersion**: '2022-06-15-preview' (ReadOnly, DeployTimeConstant): The resource api version
 * **appRoleId**: string (Required)
 * **id**: string (ReadOnly, DeployTimeConstant): The resource id
-* **name**: string (Required, DeployTimeConstant): The resource name
+* **name**: string (Required): The resource name
 * **principalId**: string (Required)
 * **resourceId**: string (Required)
 * **type**: 'Microsoft.Graph/servicePrincipals/appRoleAssignments' (ReadOnly, DeployTimeConstant): The resource type
@@ -64,6 +66,15 @@
 * **passwordProfile**: [PasswordProfile](#passwordprofile) (Required): Basic properties of a PasswordProfile.
 * **type**: 'Microsoft.Graph/users' (ReadOnly, DeployTimeConstant): The resource type
 * **userPrincipalName**: string (Required)
+
+## AppRole
+### Properties
+* **allowedMemberTypes**: string[]
+* **description**: string
+* **displayName**: string
+* **id**: string
+* **isEnabled**: bool
+* **value**: string
 
 ## PasswordProfile
 ### Properties
