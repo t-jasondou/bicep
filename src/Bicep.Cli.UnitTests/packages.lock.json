@@ -1867,7 +1867,7 @@
           "Azure.Bicep.Types": "0.1.449"
         }
       },
-      "graph-bicep": {
+      "bicep": {
         "type": "Project",
         "dependencies": {
           "Azure.Bicep.Core": "1.0.0",

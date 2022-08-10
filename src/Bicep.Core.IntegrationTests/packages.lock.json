@@ -2035,6 +2035,15 @@
           "Azure.Bicep.Types": "0.1.449"
         }
       },
+      "bicep": {
+        "type": "Project",
+        "dependencies": {
+          "Azure.Bicep.Core": "1.0.0",
+          "Azure.Bicep.Decompiler": "1.0.0",
+          "Microsoft.Extensions.Logging": "6.0.0",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.1"
+        }
+      },
       "bicep.core.samples": {
         "type": "Project",
         "dependencies": {
@@ -2044,7 +2053,7 @@
           "MSTest.TestAdapter": "2.2.10",
           "MSTest.TestFramework": "2.2.10",
           "Microsoft.NET.Test.Sdk": "17.2.0",
-          "graph-bicep": "1.0.0"
+          "bicep": "1.0.0"
         }
       },
       "bicep.core.unittests": {
@@ -2069,15 +2078,6 @@
           "Azure.Bicep.Core": "1.0.0",
           "CommandLineParser": "2.9.1",
           "OmniSharp.Extensions.LanguageServer": "0.19.5"
-        }
-      },
-      "graph-bicep": {
-        "type": "Project",
-        "dependencies": {
-          "Azure.Bicep.Core": "1.0.0",
-          "Azure.Bicep.Decompiler": "1.0.0",
-          "Microsoft.Extensions.Logging": "6.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "6.0.1"
         }
       }
     },
