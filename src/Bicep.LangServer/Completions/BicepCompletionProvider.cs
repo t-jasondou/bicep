@@ -1811,6 +1811,10 @@ namespace Bicep.LanguageServer.Completions
                     K8sNamespaceType.Settings,
                 };
 
+                if (model.Features.MicrosoftGraphPrivatePreviewEnabled) {
+                    availableNamespaceSettingsList = availableNamespaceSettingsList.Concat(new[] { MicrosoftGraphNamespaceType.Settings }).ToArray();
+                }
+
                 foreach (var setting in availableNamespaceSettingsList.OrderBy(x => x.BicepProviderName, LanguageConstants.IdentifierComparer))
                 {
                     var completionText = $"'{setting.BicepProviderName}@{setting.ArmTemplateProviderVersion}'";

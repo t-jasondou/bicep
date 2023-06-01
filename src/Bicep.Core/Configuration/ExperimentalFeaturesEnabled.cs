@@ -10,6 +10,7 @@ namespace Bicep.Core.Configuration;
 public record ExperimentalFeaturesEnabled(
     bool? SymbolicNameCodegen,
     bool? Extensibility,
+    bool? MicrosoftGraphPrivatePreview,
     bool? ResourceTypedParamsAndOutputs,
     bool? SourceMapping,
     bool? ParamsFiles,

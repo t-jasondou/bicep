@@ -26,6 +26,8 @@ public class OverriddenFeatureProvider : IFeatureProvider
 
     public bool ExtensibilityEnabled => overrides.ExtensibilityEnabled ?? features.ExtensibilityEnabled;
 
+    public bool MicrosoftGraphPrivatePreviewEnabled => overrides.MicrosoftGraphPrivatePreviewEnabled ?? features.MicrosoftGraphPrivatePreviewEnabled;
+
     public bool ResourceTypedParamsAndOutputsEnabled => overrides.ResourceTypedParamsAndOutputsEnabled ?? features.ResourceTypedParamsAndOutputsEnabled;
 
     public bool SourceMappingEnabled => overrides.SourceMappingEnabled ?? features.SourceMappingEnabled;

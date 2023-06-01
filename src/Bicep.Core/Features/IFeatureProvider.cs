@@ -15,6 +15,8 @@ namespace Bicep.Core.Features
 
         bool ExtensibilityEnabled { get; }
 
+        bool MicrosoftGraphPrivatePreviewEnabled { get; }
+
         bool ResourceTypedParamsAndOutputsEnabled { get; }
 
         bool SourceMappingEnabled { get; }

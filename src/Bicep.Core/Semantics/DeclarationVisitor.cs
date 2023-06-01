@@ -159,6 +159,10 @@ namespace Bicep.Core.Semantics
             {
                 declaredType = ErrorType.Create(DiagnosticBuilder.ForPosition(syntax).UnrecognizedImportProvider(syntax.Specification!.Name));
             }
+            else if (!features.MicrosoftGraphPrivatePreviewEnabled && syntax.Specification?.Name == "microsoftGraph")
+            {
+                declaredType = ErrorType.Create(DiagnosticBuilder.ForPosition(syntax).UnrecognizedImportProvider(syntax.Specification.Name));
+            }
             else
             {
                 declaredType = namespaceType;

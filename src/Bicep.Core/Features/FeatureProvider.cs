@@ -24,6 +24,8 @@ namespace Bicep.Core.Features
 
         public bool ExtensibilityEnabled => configuration.ExperimentalFeaturesEnabled.Extensibility ?? false;
 
+        public bool MicrosoftGraphPrivatePreviewEnabled => configuration.ExperimentalFeaturesEnabled.MicrosoftGraphPrivatePreview ?? false;
+        
         public bool ResourceTypedParamsAndOutputsEnabled => configuration.ExperimentalFeaturesEnabled.ResourceTypedParamsAndOutputs ?? false;
 
         public string AssemblyVersion => ThisAssembly.AssemblyFileVersion;
